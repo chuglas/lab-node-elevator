@@ -25,8 +25,14 @@ class Elevator {
   update() {
     //display in the console the actual status of the elevator by calling the log function
     this.log();
-    this.floorUp();
+    // this.floorUp();
     //List of floors that the elevator should serve.
+    if (this.floor < Doug.originFloor) {
+      this.floorUp();
+    }
+    else if (this.floor > Doug.originFloor){
+      this.floorDown();
+    }
   }
 
   _passengersEnter() {
@@ -40,8 +46,8 @@ class Elevator {
       // remove their floor from the destinationFloors
   }
 
-  floorUp(requestFloor) {
-    if (this.floor < requestFloor) {
+  floorUp() {
+    if (this.floor < this.MAXFLOOR) {
       this.floor = this.floor + 1;
     }
   }
@@ -60,7 +66,7 @@ class Elevator {
     console.log(this.requests);
     console.log("callinngggg")
     if (this.floor < Doug.originFloor) {
-      this.floorUp(Doug.originFloor);
+      this.floorUp();
     }
     else if (this.floor < Doug.originFloor) {
       this.floorDown();
